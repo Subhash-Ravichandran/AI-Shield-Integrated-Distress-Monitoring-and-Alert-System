@@ -1,108 +1,88 @@
-# AI Shield: Integrated Distress Monitoring and Alert System
+# Distress Detection and GPS Alert System  
 
-## Project Overview
-**AI Shield** is an advanced AI-based safety alert system designed to enhance personal security, particularly for women. The system detects distress signals, such as scream audio, and automatically alerts trusted contacts with the GPS coordinates of the location. By leveraging machine learning and audio processing, AI Shield provides a proactive and reliable safety mechanism. It also has the potential for future integration with biometric and wearable technologies for enhanced safety.
-
----
-
-## Features
-- **Real-Time Distress Detection:** Detect scream audio and abnormal physiological patterns (e.g., pulse and heart rate) in real time.
-- **Automated Alerts:** Share GPS coordinates with trusted contacts when distress is detected.
-- **User-Friendly Interface:** Intuitive app design for easy use.
-- **Future Integration:** Support for wearable accessories and biometric data.
-
----
-
-## Setup Instructions
-
-### Step 1: Clone the Repository
-```bash
-git clone https://github.com/your-repository/ai-shield.git
-cd ai-shield
-```
-
-### Step 2: Install Dependencies
-Ensure you have Python 3.7+ installed. Install required dependencies using:
-```bash
-pip install -r requirements.txt
-```
-
-### Step 3: Download Pre-trained Models
-Download the pre-trained AI model for audio classification from [Google Drive/Cloud](#link) and place it in the `models` directory.
-
-### Step 4: Set Up API Keys
-- Obtain an API key for **Google Maps** (for GPS coordinates) and configure it in `config.py`.
-- Set up your SMS or email notification service credentials in `config.py`.
-
-### Step 5: Run the Application
-Launch the app with:
-```bash
-python app.py
-```
+## Table of Contents  
+- [Project Overview](#project-overview)  
+- [Features](#features)  
+- [Technologies Used](#technologies-used)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Project Structure](#project-structure)  
+- [Future Improvements](#future-improvements)  
+- [Contributing](#contributing)  
+- [License](#license)  
 
 ---
 
-## Dependencies List
-- Python 3.7+
-- Flask (for web interface)
-- TensorFlow or PyTorch (for AI model)
-- Numpy, Pandas (data processing)
-- Librosa (audio processing)
-- Matplotlib/Seaborn (visualizations)
-- Twilio or SendGrid (notifications)
-- OpenCV (for multimodal extensions)
-- Google Maps API
+## Project Overview  
+The **Distress Detection and GPS Alert System** is an AI-powered solution designed to enhance personal safety. It detects distress signals, such as screams, from audio inputs and automatically alerts trusted contacts or emergency services with the user's GPS location. This system aims to address personal safety challenges and ensure timely assistance in emergencies.  
 
 ---
 
-## Usage Examples
-1. **Launching the App**  
-   Run the app and access the user interface at `http://localhost:5000`.
-
-2. **Detecting Distress Signals**  
-   - Speak or scream into the app's microphone input.
-   - If distress is detected, the system will:
-     - Notify trusted contacts via SMS/email.
-     - Share the user’s GPS location.
-
-3. **Configuring Trusted Contacts**  
-   Add and manage trusted contacts through the app interface.
+## Features  
+- **Real-Time Audio Analysis:** Detects distress signals (e.g., screams) using machine learning models.  
+- **Dynamic GPS Retrieval:** Automatically fetches and logs GPS coordinates using geolocation APIs.  
+- **SMS Alerts:** Sends SMS notifications with location details using Twilio's messaging service.  
+- **Customizable:** Supports user-defined trusted contacts for personalized emergency responses.  
 
 ---
 
-## Screenshots/GIFs
-### App Dashboard  
-![App Dashboard](screenshots/dashboard.png)
-
-### Detection in Action  
-![Detection Example](screenshots/detection.gif)
-
----
-
-## Team Members
-- **Subhash**  
-  - **Role:** Developer and Project Lead  
-  - **Expertise:** AI/ML, Audio Processing, Python Development, Data Analysis  
-  - **Contact:** [Email](mailto:subhash@example.com)
+## Technologies Used  
+- **Python Libraries:**  
+  - Machine Learning: `TensorFlow` or `PyTorch`  
+  - Audio Processing: `Librosa`  
+  - Geolocation: `geopy`  
+  - SMS Service: `Twilio` API  
+- **Development Tools:** Jupyter Notebook, Integrated Development Environments (IDEs)  
+- **APIs:** Twilio Messaging API, Nominatim Geolocation API  
 
 ---
 
-## Future Enhancements
-- Integration with wearable accessories like censored rings, bangles, earrings, and GPS-enabled clothing.
-- Multimodal distress detection combining audio, video, and biometric data.
-- Localization with support for multiple languages and region-specific alert systems.
+## Installation  
+Follow these steps to set up the project:  
 
----
+1. Clone this repository:  m/username/distress-detection-gps-alert.git
+   Navigate to the project directory:
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
----
+cd distress-detection-gps-alert  
+Install the required dependencies:
 
-## Contributions
-Contributions are welcome! Please fork the repository and submit a pull request for review.
 
----
+pip install -r requirements.txt  
+Configure the Twilio API credentials in the config.py file:
 
-## Contact
-For any queries or suggestions, please contact Subhash at [subhash@example.com](mailto:subhash@example.com).
+TWILIO_SID = "your_twilio_sid"  
+TWILIO_TOKEN = "your_twilio_token"  
+TWILIO_FROM_NUMBER = "your_twilio_phone_number"  
+TWILIO_TO_NUMBER = "trusted_contact_number"  
+Usage
+Prepare the Audio File:
+Place the audio file you want to analyze in the project directory.
+
+Run the Main Pipeline:
+Execute the script to analyze the audio and send alerts if necessary:
+
+python main.py --audio_path test_audio.wav  
+Receive Alerts:
+If a scream is detected, the system will send an SMS to the configured trusted contact with the GPS coordinates.
+
+Project Structure
+plaintext
+
+distress-detection-gps-alert/  
+├── data/                    # Sample audio files  
+├── models/                  # Pre-trained ML models  
+├── scripts/                 # Core scripts for the pipeline  
+│   ├── preprocess.py        # Preprocessing and audio feature extraction  
+│   ├── predict.py           # Distress signal detection logic  
+│   ├── gps.py               # GPS coordinate retrieval logic  
+│   └── sms.py               # Twilio SMS alert logic  
+├── main.py                  # Entry point for the pipeline  
+├── requirements.txt         # Project dependencies  
+└── README.md                # Project documentation  
+Future Improvements
+Enhance the model's ability to detect various distress signals beyond screams.
+Integrate additional alert methods such as email or push notifications.
+Implement a mobile app interface for ease of use and better accessibility.
+Improve the GPS retrieval mechanism to support offline environments.
+Add multi-language support for alerts.
